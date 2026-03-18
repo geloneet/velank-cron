@@ -8,7 +8,7 @@ export async function GET(req: Request) {
       return new Response('Unauthorized', { status: 401 });
     }
 
-    const firebaseUrl = process.env.FIREBASE_APP_URL;
+    const firebaseUrl = (globalThis as any).process?.env?.FIREBASE_APP_URL;
 
     if (!firebaseUrl) {
       return new Response('FIREBASE_APP_URL not set', { status: 500 });
